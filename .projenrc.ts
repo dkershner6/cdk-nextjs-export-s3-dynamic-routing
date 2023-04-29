@@ -9,10 +9,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   projenrcTs: true,
   repositoryUrl: 'https://github.com/dkershner6/cdk-nextjs-export-s3-dynamic-routing.git',
 
-  // deps: [],                /* Runtime dependencies of this module. */
+  deps: ['lodash.set'], /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
+  devDeps: ['@types/lodash.set'], /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
+  bundledDeps: ['lodash.set'], /* Bundled dependencies of this module. */
 
   tsconfig: {
     compilerOptions: {
