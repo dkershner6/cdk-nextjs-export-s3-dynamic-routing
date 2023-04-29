@@ -13,6 +13,13 @@ import { minify } from 'uglify-js';
 import { NestedStringObject, NextjsRoutesManifest } from './nextjsTypes';
 import { NextjsExportS3DynamicRoutingDistributionProps } from './omitCdkTypes';
 
+/**
+ * Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.
+ *
+ * Deploys Cloudfront, a Cloudfront Function, an S3 Bucket, and an S3 Deployment.
+ *
+ * With defaults set, if this construct is removed, all resources will be cleaned up.
+ */
 export interface NextjsExportS3DynamicRoutingSiteProps {
   /**
    * @default ./.next
@@ -54,6 +61,7 @@ export interface NextjsExportS3DynamicRoutingSiteProps {
 
 const VALID_NEXTJS_ROUTES_MANIFEST_VERSION = 3;
 const PAGE_FIELD_NAME_FOR_DYNAMIC_ROUTE_OBJECT = '___page';
+const STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER = '*';
 
 const DEFAULT_NEXT_BUILD_DIR = './.next';
 const DEFAULT_NEXT_EXPORT_DIR = './out';
@@ -102,6 +110,14 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     this.deploySiteToS3();
   }
 
+  /**
+   * Rewrites incoming dynamic URLs to the correct path in the S3 bucket.
+   * Otherwise, leaves the request alone.
+   *
+   * This adds almost zero latency, or is so negligible it cannot be measured.
+   *
+   * @returns cloudfront.Function
+   */
   private createCloudfrontUrlRewriterFunction(): cloudfront.Function {
     const nextBuildDir = this.props.nextBuildDir ?? DEFAULT_NEXT_BUILD_DIR;
     console.log(
@@ -151,7 +167,20 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     });
   }
 
-  /** Just slimming it down for size. */
+  /**
+   * This is in part to reduce the storage of these routes, but it also is massively more CPU efficient
+   * than using Regex.
+   *
+   * Cloudfront functions have an arbitrary time * CPU metric that is hard to grasp, but it starts timing out at about
+   * 10 routes with using Regex (as prescribed by Vercel's design).
+   * I have yet to see a timeout with this method, even with many routes. We are likely to hit size limits
+   * before CPU limits.
+   *
+   * This could probably support catch-all routes, but I have not found a reason to do so, yet.
+   *
+   * @see NestedStringObject
+   * @see The Cloudfront Function Code dynamic routes logic
+   */
   private buildDynamicRoutePages(parsedRoutesManifest: NextjsRoutesManifest): NestedStringObject {
     return parsedRoutesManifest.dynamicRoutes.reduce(
       (result, route) => {
@@ -166,7 +195,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
           .filter(Boolean)
           .map((part) =>
             part.startsWith('[')
-              ? '*'
+              ? STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER
               : part,
           );
 
@@ -180,6 +209,13 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     );
   }
 
+  /**
+   * Builds and minifies the Cloudfront Function code to rewrite URLs as needed.
+   *
+   * @param staticRoutePagesStringified Used to map static routes to their S3 path.
+   * @param dynamicRoutePagesStringified Used to map dynamic routes to their S3 path.
+   * @returns string (minified Cloudfront Function code)
+   */
   private buildCloudfrontFunctionCode(
     staticRoutePagesStringified: string,
     dynamicRoutePagesStringified: string,
@@ -249,14 +285,14 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
                 }
                 currentRouteObject = currentRouteObject[uriSection];
                 continue; // Found valid exact match
-            } else if (currentRouteObject['*']) { // dynamic match
+            } else if (currentRouteObject['${STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER}']) { // dynamic match
                 if (isLastUriSection) {
-                    if (currentRouteObject['*']['${PAGE_FIELD_NAME_FOR_DYNAMIC_ROUTE_OBJECT}']) {
-                        req.uri = addSuffix(currentRouteObject['*']['${PAGE_FIELD_NAME_FOR_DYNAMIC_ROUTE_OBJECT}']);
+                    if (currentRouteObject['${STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER}']['${PAGE_FIELD_NAME_FOR_DYNAMIC_ROUTE_OBJECT}']) {
+                        req.uri = addSuffix(currentRouteObject['${STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER}']['${PAGE_FIELD_NAME_FOR_DYNAMIC_ROUTE_OBJECT}']);
                         return req;
                     }
                 }
-                currentRouteObject = currentRouteObject['*'];
+                currentRouteObject = currentRouteObject['${STANDARDIZED_DYNAMIC_ROUTE_MAPPING_PLACEHOLDER}'];
                 continue; // Found valid dynamic match
             }
             break; // Not a match, we are done looking
@@ -279,6 +315,11 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     return functionCode.code;
   };
 
+  /**
+   * Creates a locked down S3 bucket for the static site that only allows access from the Cloudfront distribution.
+   *
+   * @returns s3.Bucket
+   */
   private createS3Bucket(): s3.Bucket {
     return new s3.Bucket(this, `${this.id}-S3Bucket`, {
       publicReadAccess: false,
@@ -289,6 +330,11 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     });
   };
 
+  /**
+   * Creates a cloudfront distribution with logic to handle typical Next.js functionality, like 404 pages.
+   *
+   * @returns cloudfront.Distribution
+   */
   private createCloudfrontDistribution(): cloudfront.Distribution {
     return new cloudfront.Distribution(this, `${this.id}-CloudfrontDistribution`, {
       defaultRootObject: 'index.html',
@@ -324,6 +370,10 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     });
   }
 
+  /**
+   * Deploys two separate deployments to S3, with different cache control settings.
+   * @returns Two s3deploy.BucketDeployment objects.
+   */
   private deploySiteToS3(): s3deploy.BucketDeployment[] {
     const result = new Array<s3deploy.BucketDeployment>();
     const nextExportPath = this.props.nextExportPath ?? DEFAULT_NEXT_EXPORT_DIR;
@@ -345,7 +395,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
       exclude: extensionsToCacheForever,
       cacheControl: [s3deploy.CacheControl.fromString(CACHE_CONTROL_SERVER_LONG_NO_BROWSER)],
       prune: false,
-      distribution: this.cloudfrontDistribution,
+      distribution: this.cloudfrontDistribution, // Invalidate the Cloudfront distribution, the whole thing.
     }));
 
     return result;
