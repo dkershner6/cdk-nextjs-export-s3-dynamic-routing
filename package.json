@@ -37,6 +37,7 @@
     "@types/jest": "^29.5.1",
     "@types/lodash.set": "^4.3.7",
     "@types/node": "^16",
+    "@types/uglify-js": "^3.17.1",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.1.0",
@@ -63,10 +64,12 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "uglify-js": "^3.17.4"
   },
   "bundledDependencies": [
-    "lodash.set"
+    "lodash.set",
+    "uglify-js"
   ],
   "keywords": [
     "cdk"

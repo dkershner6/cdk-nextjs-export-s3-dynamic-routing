@@ -14,6 +14,10 @@
       "type": "build"
     },
     {
+      "name": "@types/uglify-js",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^5",
       "type": "build"
@@ -107,6 +111,10 @@
       "type": "bundled"
     },
     {
+      "name": "uglify-js",
+      "type": "bundled"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.1.0",
       "type": "peer"
@@ -118,6 +126,10 @@
     },
     {
       "name": "lodash.set",
+      "type": "runtime"
+    },
+    {
+      "name": "uglify-js",
       "type": "runtime"
     }
   ],
