@@ -1,5 +1,7 @@
 # Next.js Static Export S3 Site with Dynamic Routing
 
+[NPM](https://www.npmjs.com/package/cdk-nextjs-export-s3-dynamic-routing)
+
 Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.
 
 This effectively takes all of the benefits of Next.js, including routing, code-splitting, static HTML exporting, and also gives you the benefits of a SPA (single page application). This will be mostly useful for client-generated pages, but you can also partially server side generate some data should you choose.
