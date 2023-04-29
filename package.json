@@ -1,5 +1,6 @@
 {
   "name": "cdk-nextjs-export-s3-dynamic-routing",
+  "description": "Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.",
   "repository": {
     "type": "git",
     "url": "https://github.com/dkershner6/cdk-nextjs-export-s3-dynamic-routing.git"
