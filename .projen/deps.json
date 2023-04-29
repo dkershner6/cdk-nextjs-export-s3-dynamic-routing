@@ -14,6 +14,10 @@
       "type": "build"
     },
     {
+      "name": "@types/uglify-js",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^5",
       "type": "build"

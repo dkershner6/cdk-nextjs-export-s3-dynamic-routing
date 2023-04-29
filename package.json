@@ -38,6 +38,7 @@
     "@types/jest": "^29.5.1",
     "@types/lodash.set": "^4.3.7",
     "@types/node": "^16",
+    "@types/uglify-js": "^3.17.1",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.77.0",
