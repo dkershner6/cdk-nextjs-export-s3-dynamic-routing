@@ -2,6 +2,10 @@
 
 [NPM](https://www.npmjs.com/package/cdk-nextjs-export-s3-dynamic-routing)
 
+[![View on Construct Hub](https://constructs.dev/badge?package=cdk-nextjs-export-s3-dynamic-routing)](https://constructs.dev/packages/cdk-nextjs-export-s3-dynamic-routing)
+
+_Have a more complex use case for Next.js 13? Perhaps check out [cdk-nextjs-standalone-ecs](https://constructs.dev/packages/cdk-nextjs-standalone-ecs)
+
 Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.
 
 This effectively takes all of the benefits of Next.js, including routing, code-splitting, static HTML exporting, and also gives you the benefits of a SPA (single page application). This will be mostly useful for client-generated pages, but you can also partially server side generate some data should you choose.
