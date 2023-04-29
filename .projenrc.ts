@@ -13,5 +13,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: 'Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.', /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: ['@types/lodash.set'], /* Build dependencies for this module. */
   packageName: 'cdk-nextjs-export-s3-dynamic-routing', /* The "name" in package.json. */
+
+  bundledDeps: ['lodash.set', 'uglify-js'], /* Runtime dependencies that will be bundled by esbuild. */
+
+  majorVersion: 1, /* Major version of your library. */
 });
 project.synth();

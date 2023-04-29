@@ -67,6 +67,10 @@
     "lodash.set": "^4.3.2",
     "uglify-js": "^3.17.4"
   },
+  "bundledDependencies": [
+    "lodash.set",
+    "uglify-js"
+  ],
   "keywords": [
     "cdk"
   ],
