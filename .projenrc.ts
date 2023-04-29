@@ -1,8 +1,9 @@
 import { awscdk } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
+  majorVersion: 1,
   author: 'Derek Kershner',
   authorAddress: 'https://dkershner.com',
-  cdkVersion: '2.1.0',
+  cdkVersion: '2.77.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
   name: 'cdk-nextjs-export-s3-dynamic-routing',
@@ -15,10 +16,5 @@ const project = new awscdk.AwsCdkConstructLibrary({
   packageName: 'cdk-nextjs-export-s3-dynamic-routing', /* The "name" in package.json. */
   bundledDeps: ['lodash.set', 'uglify-js'], /* Bundled dependencies of this module. */
 
-  tsconfig: {
-    compilerOptions: {
-      esModuleInterop: true,
-    },
-  },
 });
 project.synth();
