@@ -145,7 +145,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     ) as NextjsRoutesManifest;
 
     if (
-      parsedRoutesManifest.version !== VALID_NEXTJS_ROUTES_MANIFEST_VERSION
+      parsedRoutesManifest?.version !== VALID_NEXTJS_ROUTES_MANIFEST_VERSION
     ) {
       throw new Error(
         `NextjsStaticSite only supports Next.js version 10.0.0 or greater, you are currently using a routesManifest with version ${parsedRoutesManifest.version} and it must be ${VALID_NEXTJS_ROUTES_MANIFEST_VERSION}.`,
