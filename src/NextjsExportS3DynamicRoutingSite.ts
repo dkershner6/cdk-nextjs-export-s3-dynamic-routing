@@ -42,21 +42,21 @@ export interface NextjsExportS3DynamicRoutingSiteProps {
    *   removalPolicy: cdk.RemovalPolicy.DESTROY,
    * }
    */
-  bucketProps?: s3.BucketProps;
+  readonly bucketProps?: s3.BucketProps;
 
   /**
    * Passthrough props to customize the Cloudfront distribution.
    *
    * @default Sets up the S3 Origin and Cache Policy.
    */
-  distributionProps?: NextjsExportS3DynamicRoutingDistributionProps;
+  readonly distributionProps?: NextjsExportS3DynamicRoutingDistributionProps;
 
   /**
    * Passthrough props to customize the S3 Origin.
    *
    * @default S3 Origin defaults.
    */
-  s3OriginProps?: origins.S3OriginProps;
+  readonly s3OriginProps?: origins.S3OriginProps;
 }
 
 const VALID_NEXTJS_ROUTES_MANIFEST_VERSION = 3;
