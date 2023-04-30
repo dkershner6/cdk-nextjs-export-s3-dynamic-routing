@@ -120,14 +120,23 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
    */
   private createCloudfrontUrlRewriterFunction(): cloudfront.Function {
     const nextBuildDir = this.props.nextBuildDir ?? DEFAULT_NEXT_BUILD_DIR;
+    const routesManifestPath = path.join(
+      process.cwd(),
+      nextBuildDir,
+      'routes-manifest.json',
+    );
+
+    if (!fs.existsSync(routesManifestPath)) {
+      throw new Error(
+        `Could not find routes-manifest.json in ${nextBuildDir}. Please ensure you have run \`next build && next export\` before deploying.`,
+      );
+    }
+
     console.log(
       `Producing Cloudfront Function code for ${nextBuildDir} routes-manifest.json`,
     );
     const routesManifest = fs.readFileSync(
-      path.join(
-        nextBuildDir,
-        'routes-manifest.json',
-      ),
+      routesManifestPath,
       'utf8',
     );
 
@@ -136,7 +145,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     ) as NextjsRoutesManifest;
 
     if (
-      parsedRoutesManifest.version !== VALID_NEXTJS_ROUTES_MANIFEST_VERSION
+      parsedRoutesManifest?.version !== VALID_NEXTJS_ROUTES_MANIFEST_VERSION
     ) {
       throw new Error(
         `NextjsStaticSite only supports Next.js version 10.0.0 or greater, you are currently using a routesManifest with version ${parsedRoutesManifest.version} and it must be ${VALID_NEXTJS_ROUTES_MANIFEST_VERSION}.`,
@@ -382,7 +391,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     const extensionsToCacheForever = ['*.js', '*.css'];
 
     result.push(new s3deploy.BucketDeployment(this, `${this.id}-S3BucketDeployment-Forever`, {
-      sources: [s3deploy.Source.asset(path.join(__dirname, nextExportPath))],
+      sources: [s3deploy.Source.asset(path.join(process.cwd(), nextExportPath))],
       destinationBucket: this.s3Bucket,
       include: extensionsToCacheForever,
       cacheControl: [s3deploy.CacheControl.fromString(CACHE_CONTROL_FOREVER)],
@@ -390,7 +399,7 @@ export class NextjsExportS3DynamicRoutingSite extends Construct {
     }));
 
     result.push(new s3deploy.BucketDeployment(this, `${this.id}-S3BucketDeployment-Default`, {
-      sources: [s3deploy.Source.asset(path.join(__dirname, nextExportPath))],
+      sources: [s3deploy.Source.asset(path.join(process.cwd(), nextExportPath))],
       destinationBucket: this.s3Bucket,
       exclude: extensionsToCacheForever,
       cacheControl: [s3deploy.CacheControl.fromString(CACHE_CONTROL_SERVER_LONG_NO_BROWSER)],
