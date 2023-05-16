@@ -16,5 +16,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   packageName: 'cdk-nextjs-export-s3-dynamic-routing', /* The "name" in package.json. */
   bundledDeps: ['lodash.set', 'uglify-js'], /* Bundled dependencies of this module. */
 
+  gitignore: ['.DS_Store'],
 });
 project.synth();
