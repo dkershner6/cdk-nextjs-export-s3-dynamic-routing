@@ -259,7 +259,7 @@ const nextjsExportS3DynamicRoutingDistributionProps: NextjsExportS3DynamicRoutin
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.additionalBehaviors">additionalBehaviors</a></code> | <code>{[ key: string ]: aws-cdk-lib.aws_cloudfront.BehaviorOptions}</code> | Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to. |
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | A certificate to associate with the distribution. |
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.comment">comment</a></code> | <code>string</code> | Any comments you want to include about the distribution. |
-| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.defaultBehavior">defaultBehavior</a></code> | <code>aws-cdk-lib.aws_cloudfront.BehaviorOptions</code> | The default behavior for the distribution. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.defaultBehavior">defaultBehavior</a></code> | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions">PartialBehaviorOptions</a></code> | The default behavior for the distribution. |
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.defaultRootObject">defaultRootObject</a></code> | <code>string</code> | The object that you want CloudFront to request from your origin (for example, index.html) when a viewer requests the root URL for your distribution. If no default object is set, the request goes to the origin's root (e.g., example.com/). |
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.domainNames">domainNames</a></code> | <code>string[]</code> | Alternative domain names for this distribution. |
 | <code><a href="#cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.enabled">enabled</a></code> | <code>boolean</code> | Enable or disable the distribution. |
@@ -322,14 +322,14 @@ Any comments you want to include about the distribution.
 ##### `defaultBehavior`<sup>Optional</sup> <a name="defaultBehavior" id="cdk-nextjs-export-s3-dynamic-routing.NextjsExportS3DynamicRoutingDistributionProps.property.defaultBehavior"></a>
 
 ```typescript
-public readonly defaultBehavior: BehaviorOptions;
+public readonly defaultBehavior: PartialBehaviorOptions;
 ```
 
-- *Type:* aws-cdk-lib.aws_cloudfront.BehaviorOptions
+- *Type:* <a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions">PartialBehaviorOptions</a>
 
 The default behavior for the distribution.
 
-Optional here, not usually optional in the CDK.
+Optional and Partial here, not usually either in the CDK.
 
 ---
 
@@ -652,6 +652,211 @@ public readonly s3OriginProps: S3OriginProps;
 - *Default:* S3 Origin defaults.
 
 Passthrough props to customize the S3 Origin.
+
+---
+
+### PartialBehaviorOptions <a name="PartialBehaviorOptions" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions"></a>
+
+Options for creating a new behavior.
+
+origin is optional here, not usually in the CDK.
+
+#### Initializer <a name="Initializer" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.Initializer"></a>
+
+```typescript
+import { PartialBehaviorOptions } from 'cdk-nextjs-export-s3-dynamic-routing'
+
+const partialBehaviorOptions: PartialBehaviorOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.allowedMethods">allowedMethods</a></code> | <code>aws-cdk-lib.aws_cloudfront.AllowedMethods</code> | HTTP methods to allow for this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.cachedMethods">cachedMethods</a></code> | <code>aws-cdk-lib.aws_cloudfront.CachedMethods</code> | HTTP methods to cache for this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.cachePolicy">cachePolicy</a></code> | <code>aws-cdk-lib.aws_cloudfront.ICachePolicy</code> | The cache policy for this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.compress">compress</a></code> | <code>boolean</code> | Whether you want CloudFront to automatically compress certain files for this cache behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.edgeLambdas">edgeLambdas</a></code> | <code>aws-cdk-lib.aws_cloudfront.EdgeLambda[]</code> | The Lambda@Edge functions to invoke before serving the contents. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.functionAssociations">functionAssociations</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionAssociation[]</code> | The CloudFront functions to invoke before serving the contents. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.originRequestPolicy">originRequestPolicy</a></code> | <code>aws-cdk-lib.aws_cloudfront.IOriginRequestPolicy</code> | The origin request policy for this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.responseHeadersPolicy">responseHeadersPolicy</a></code> | <code>aws-cdk-lib.aws_cloudfront.IResponseHeadersPolicy</code> | The response headers policy for this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.smoothStreaming">smoothStreaming</a></code> | <code>boolean</code> | Set this to true to indicate you want to distribute media files in the Microsoft Smooth Streaming format using this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.trustedKeyGroups">trustedKeyGroups</a></code> | <code>aws-cdk-lib.aws_cloudfront.IKeyGroup[]</code> | A list of Key Groups that CloudFront can use to validate signed URLs or signed cookies. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.viewerProtocolPolicy">viewerProtocolPolicy</a></code> | <code>aws-cdk-lib.aws_cloudfront.ViewerProtocolPolicy</code> | The protocol that viewers can use to access the files controlled by this behavior. |
+| <code><a href="#cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.origin">origin</a></code> | <code>aws-cdk-lib.aws_cloudfront.IOrigin</code> | The origin that you want CloudFront to route requests to when they match this behavior. |
+
+---
+
+##### `allowedMethods`<sup>Optional</sup> <a name="allowedMethods" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.allowedMethods"></a>
+
+```typescript
+public readonly allowedMethods: AllowedMethods;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.AllowedMethods
+- *Default:* AllowedMethods.ALLOW_GET_HEAD
+
+HTTP methods to allow for this behavior.
+
+---
+
+##### `cachedMethods`<sup>Optional</sup> <a name="cachedMethods" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.cachedMethods"></a>
+
+```typescript
+public readonly cachedMethods: CachedMethods;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.CachedMethods
+- *Default:* CachedMethods.CACHE_GET_HEAD
+
+HTTP methods to cache for this behavior.
+
+---
+
+##### `cachePolicy`<sup>Optional</sup> <a name="cachePolicy" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.cachePolicy"></a>
+
+```typescript
+public readonly cachePolicy: ICachePolicy;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.ICachePolicy
+- *Default:* CachePolicy.CACHING_OPTIMIZED
+
+The cache policy for this behavior.
+
+The cache policy determines what values are included in the cache key,
+and the time-to-live (TTL) values for the cache.
+
+> [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html.](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html.)
+
+---
+
+##### `compress`<sup>Optional</sup> <a name="compress" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.compress"></a>
+
+```typescript
+public readonly compress: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether you want CloudFront to automatically compress certain files for this cache behavior.
+
+See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html#compressed-content-cloudfront-file-types
+for file types CloudFront will compress.
+
+---
+
+##### `edgeLambdas`<sup>Optional</sup> <a name="edgeLambdas" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.edgeLambdas"></a>
+
+```typescript
+public readonly edgeLambdas: EdgeLambda[];
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.EdgeLambda[]
+- *Default:* no Lambda functions will be invoked
+
+The Lambda@Edge functions to invoke before serving the contents.
+
+> [https://aws.amazon.com/lambda/edge](https://aws.amazon.com/lambda/edge)
+
+---
+
+##### `functionAssociations`<sup>Optional</sup> <a name="functionAssociations" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.functionAssociations"></a>
+
+```typescript
+public readonly functionAssociations: FunctionAssociation[];
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionAssociation[]
+- *Default:* no functions will be invoked
+
+The CloudFront functions to invoke before serving the contents.
+
+---
+
+##### `originRequestPolicy`<sup>Optional</sup> <a name="originRequestPolicy" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.originRequestPolicy"></a>
+
+```typescript
+public readonly originRequestPolicy: IOriginRequestPolicy;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.IOriginRequestPolicy
+- *Default:* none
+
+The origin request policy for this behavior.
+
+The origin request policy determines which values (e.g., headers, cookies)
+are included in requests that CloudFront sends to the origin.
+
+---
+
+##### `responseHeadersPolicy`<sup>Optional</sup> <a name="responseHeadersPolicy" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.responseHeadersPolicy"></a>
+
+```typescript
+public readonly responseHeadersPolicy: IResponseHeadersPolicy;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.IResponseHeadersPolicy
+- *Default:* none
+
+The response headers policy for this behavior.
+
+The response headers policy determines which headers are included in responses
+
+---
+
+##### `smoothStreaming`<sup>Optional</sup> <a name="smoothStreaming" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.smoothStreaming"></a>
+
+```typescript
+public readonly smoothStreaming: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Set this to true to indicate you want to distribute media files in the Microsoft Smooth Streaming format using this behavior.
+
+---
+
+##### `trustedKeyGroups`<sup>Optional</sup> <a name="trustedKeyGroups" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.trustedKeyGroups"></a>
+
+```typescript
+public readonly trustedKeyGroups: IKeyGroup[];
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.IKeyGroup[]
+- *Default:* no KeyGroups are associated with cache behavior
+
+A list of Key Groups that CloudFront can use to validate signed URLs or signed cookies.
+
+> [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+
+---
+
+##### `viewerProtocolPolicy`<sup>Optional</sup> <a name="viewerProtocolPolicy" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.viewerProtocolPolicy"></a>
+
+```typescript
+public readonly viewerProtocolPolicy: ViewerProtocolPolicy;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.ViewerProtocolPolicy
+- *Default:* ViewerProtocolPolicy.ALLOW_ALL
+
+The protocol that viewers can use to access the files controlled by this behavior.
+
+---
+
+##### `origin`<sup>Optional</sup> <a name="origin" id="cdk-nextjs-export-s3-dynamic-routing.PartialBehaviorOptions.property.origin"></a>
+
+```typescript
+public readonly origin: IOrigin;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.IOrigin
+
+The origin that you want CloudFront to route requests to when they match this behavior.
 
 ---
 
