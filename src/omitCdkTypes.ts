@@ -1,6 +1,17 @@
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
-import { BehaviorOptions, ErrorResponse, GeoRestriction, HttpVersion, PriceClass, SSLMethod, SecurityPolicyProtocol } from 'aws-cdk-lib/aws-cloudfront';
+import { AddBehaviorOptions, BehaviorOptions, ErrorResponse, GeoRestriction, HttpVersion, IOrigin, PriceClass, SSLMethod, SecurityPolicyProtocol } from 'aws-cdk-lib/aws-cloudfront';
 import * as s3 from 'aws-cdk-lib/aws-s3';
+
+/**
+ * Options for creating a new behavior.
+ * origin is optional here, not usually in the CDK.
+ */
+export interface PartialBehaviorOptions extends AddBehaviorOptions {
+  /**
+     * The origin that you want CloudFront to route requests to when they match this behavior.
+     */
+  readonly origin?: IOrigin;
+}
 
 /**
  * Differences from cloudfront.DistributionProps:
@@ -11,7 +22,7 @@ export interface NextjsExportS3DynamicRoutingDistributionProps {
      * The default behavior for the distribution.
      * Optional and Partial here, not usually either in the CDK.
      */
-  readonly defaultBehavior?: Partial<BehaviorOptions>;
+  readonly defaultBehavior?: PartialBehaviorOptions;
   /**
      * Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to.
      *
