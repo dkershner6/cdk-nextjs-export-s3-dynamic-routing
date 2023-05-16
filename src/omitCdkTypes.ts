@@ -9,9 +9,9 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 export interface NextjsExportS3DynamicRoutingDistributionProps {
   /**
      * The default behavior for the distribution.
-     * Optional here, not usually optional in the CDK.
+     * Optional and Partial here, not usually either in the CDK.
      */
-  readonly defaultBehavior?: BehaviorOptions;
+  readonly defaultBehavior?: Partial<BehaviorOptions>;
   /**
      * Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to.
      *
