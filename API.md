@@ -4,7 +4,7 @@
 
 [![View on Construct Hub](https://constructs.dev/badge?package=cdk-nextjs-export-s3-dynamic-routing)](https://constructs.dev/packages/cdk-nextjs-export-s3-dynamic-routing)
 
-_Have a more complex use case for Next.js 13? Perhaps check out [cdk-nextjs-standalone-ecs](https://constructs.dev/packages/cdk-nextjs-standalone-ecs)._
+_Have a more complex use case for Next.js 13? Perhaps check out [cdk-nextjs-standalone](https://constructs.dev/packages/cdk-nextjs-standalone)._
 
 Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes.
 
@@ -71,6 +71,7 @@ export class MyStaticSiteStack extends cdk.Stack {
 ```
 
 There are no outside requirements for this construct, and it will delete all of its resources when the stack is deleted.
+
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
