@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 16.x
       - name: Install dependencies
-        run: yarn install --check-files --frozen-lockfile
+        run: npm ci
       - name: release
         run: npx projen release
       - name: Check for new commits
@@ -96,7 +96,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create js artifact
         run: cd .repo && npx projen package:js
       - name: Collect js Artifact
@@ -133,7 +133,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create java artifact
         run: cd .repo && npx projen package:java
       - name: Collect java Artifact
@@ -172,7 +172,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create python artifact
         run: cd .repo && npx projen package:python
       - name: Collect python Artifact
@@ -207,7 +207,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create dotnet artifact
         run: cd .repo && npx projen package:dotnet
       - name: Collect dotnet Artifact
@@ -241,7 +241,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create go artifact
         run: cd .repo && npx projen package:go
       - name: Collect go Artifact

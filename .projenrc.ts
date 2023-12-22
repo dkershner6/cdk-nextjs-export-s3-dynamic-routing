@@ -1,4 +1,5 @@
 import { awscdk } from 'projen';
+import { NodePackageManager } from 'projen/lib/javascript';
 
 const GITHUB_USERNAME_OR_ORG = 'dkershner6';
 const GITHUB_USERNAME_OR_ORG_PASCAL_CASE = 'DKershner6';
@@ -6,6 +7,8 @@ const PROJECT_NAME = 'cdk-nextjs-export-s3-dynamic-routing';
 const PROJECT_NAME_PASCAL_CASE = 'CdkNextjsExportS3DynamicRouting';
 
 const project = new awscdk.AwsCdkConstructLibrary({
+  packageManager: NodePackageManager.NPM,
+
   majorVersion: 1,
   author: 'Derek Kershner',
   authorAddress: 'https://dkershner.com',
@@ -39,12 +42,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
     moduleName: `github.com/${GITHUB_USERNAME_OR_ORG}/${PROJECT_NAME}`,
   },
 
-  publishToMaven: {
-    mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
-    javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace('-', '')}`,
-    mavenArtifactId: PROJECT_NAME,
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
-  },
+  // publishToMaven: {
+  //   mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
+  //   javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace('-', '')}`,
+  //   mavenArtifactId: PROJECT_NAME,
+  //   mavenEndpoint: 'https://s01.oss.sonatype.org',
+  // },
 });
 
 project.synth();
