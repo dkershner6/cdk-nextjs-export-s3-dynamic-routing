@@ -26,6 +26,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     distName: PROJECT_NAME,
     module: PROJECT_NAME.replace('-', '_'),
   },
+
+  publishToNuget: {
+    packageId: `dkershner6.${PROJECT_NAME}`,
+    dotNetNamespace: `dkershner6.${PROJECT_NAME}`,
+  },
 });
 
 project.synth();
