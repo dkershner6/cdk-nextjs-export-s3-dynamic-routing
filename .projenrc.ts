@@ -1,7 +1,9 @@
 import { awscdk } from 'projen';
 
 const GITHUB_USERNAME_OR_ORG = 'dkershner6';
+const GITHUB_USERNAME_OR_ORG_PASCAL_CASE = 'DKershner6';
 const PROJECT_NAME = 'cdk-nextjs-export-s3-dynamic-routing';
+const PROJECT_NAME_PASCAL_CASE = 'CdkNextjsExportS3DynamicRouting';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   majorVersion: 1,
@@ -29,8 +31,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 
   publishToNuget: {
-    packageId: `${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME}`,
-    dotNetNamespace: `${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME}`,
+    packageId: `${GITHUB_USERNAME_OR_ORG_PASCAL_CASE}.${PROJECT_NAME_PASCAL_CASE}`,
+    dotNetNamespace: `${GITHUB_USERNAME_OR_ORG_PASCAL_CASE}.${PROJECT_NAME_PASCAL_CASE}`,
   },
 
   publishToGo: {
@@ -39,7 +41,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   publishToMaven: {
     mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
-    javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME}`,
+    javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace('-', '')}`,
     mavenArtifactId: PROJECT_NAME,
     mavenEndpoint: 'https://s01.oss.sonatype.org',
   },
