@@ -128,7 +128,7 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "io.github.dkershner6.cdk-nextjs-export-s3-dynamic-routing",
+        "package": "io.github.dkershner6.cdknextjs-export-s3-dynamic-routing",
         "maven": {
           "groupId": "io.github.dkershner6",
           "artifactId": "cdk-nextjs-export-s3-dynamic-routing"
@@ -139,8 +139,8 @@
         "module": "cdk_nextjs-export-s3-dynamic-routing"
       },
       "dotnet": {
-        "namespace": "dkershner6.cdk-nextjs-export-s3-dynamic-routing",
-        "packageId": "dkershner6.cdk-nextjs-export-s3-dynamic-routing"
+        "namespace": "DKershner6.CdkNextjsExportS3DynamicRouting",
+        "packageId": "DKershner6.CdkNextjsExportS3DynamicRouting"
       },
       "go": {
         "moduleName": "github.com/dkershner6/cdk-nextjs-export-s3-dynamic-routing"
