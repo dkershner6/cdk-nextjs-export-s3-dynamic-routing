@@ -19,12 +19,16 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.10.0
       - name: Install dependencies
-        run: npm install
+        run: pnpm i --no-frozen-lockfile
       - name: build
         run: npx projen build
       - name: Find mutations
@@ -91,7 +95,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.10.0
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -100,10 +104,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && npm ci
+        run: cd .repo && pnpm i --frozen-lockfile
       - name: Create js artifact
         run: cd .repo && npx projen package:js
       - name: Collect js Artifact
@@ -116,7 +124,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.10.0
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
@@ -128,10 +136,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && npm ci
+        run: cd .repo && pnpm i --frozen-lockfile
       - name: Create python artifact
         run: cd .repo && npx projen package:python
       - name: Collect python Artifact
@@ -144,7 +156,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.10.0
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 3.x
@@ -156,10 +168,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && npm ci
+        run: cd .repo && pnpm i --frozen-lockfile
       - name: Create dotnet artifact
         run: cd .repo && npx projen package:dotnet
       - name: Collect dotnet Artifact
@@ -172,7 +188,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.10.0
       - uses: actions/setup-go@v3
         with:
           go-version: ^1.16.0
@@ -184,10 +200,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "8"
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && npm ci
+        run: cd .repo && pnpm i --frozen-lockfile
       - name: Create go artifact
         run: cd .repo && npx projen package:go
       - name: Collect go Artifact

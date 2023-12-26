@@ -28,11 +28,31 @@
       "type": "build"
     },
     {
+      "name": "dkershner6-projen",
+      "type": "build"
+    },
+    {
+      "name": "eslint-config-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-typescript",
       "type": "build"
     },
     {
       "name": "eslint-plugin-import",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-jest",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-prettier",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-sonarjs",
       "type": "build"
     },
     {
@@ -72,7 +92,15 @@
       "type": "build"
     },
     {
+      "name": "prettier",
+      "type": "build"
+    },
+    {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "projen-nvm",
       "type": "build"
     },
     {
