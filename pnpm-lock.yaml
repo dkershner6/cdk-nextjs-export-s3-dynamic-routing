@@ -38,8 +38,8 @@ devDependencies:
     specifier: 10.0.5
     version: 10.0.5
   dkershner6-projen:
-    specifier: ^0.0.4
-    version: 0.0.4(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2)
+    specifier: ^0.0.6
+    version: 0.0.6(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2)
   eslint:
     specifier: ^8
     version: 8.56.0
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^0.78.2
     version: 0.78.2(constructs@10.0.5)
   projen-nvm:
-    specifier: ^0.0.13
-    version: 0.0.13(constructs@10.0.5)(projen@0.78.2)
+    specifier: ^0.0.15
+    version: 0.0.15(constructs@10.0.5)(projen@0.78.2)
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -2159,8 +2159,8 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /dkershner6-projen@0.0.4(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2):
-    resolution: {integrity: sha512-ZK2i47mDATGpXY++dppN/RyfkL/JuzZNtPxo40lEGZ1KkxJoh08cGQ4Dmyz62cSVNiA7eVi0yJHKyeIep4BC/w==}
+  /dkershner6-projen@0.0.6(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2):
+    resolution: {integrity: sha512-Ut/q89YUtU9wpX0gXcmsefeVGhqRAt4sH/D8ISRTXPafMgO1UxnrqDvdbJfbpAJjpW0JuT5fo+F89b0enhU4eQ==}
     engines: {node: '>= 18.12.0 <= 20.10.0'}
     peerDependencies:
       constructs: ^10.3.0
@@ -4664,8 +4664,8 @@ packages:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
 
-  /projen-nvm@0.0.13(constructs@10.0.5)(projen@0.78.2):
-    resolution: {integrity: sha512-cbf28OgZGunmbKZRfGX+SBqD/3x9aYdVH96SJvDtJzCHZd2bYhtaSv/M6CLZeFk9oBdH8EYmbuWEovg6FO1adg==}
+  /projen-nvm@0.0.15(constructs@10.0.5)(projen@0.78.2):
+    resolution: {integrity: sha512-oHpsUaB+LFo7NbAiJJRyu+a49g7PHQXwtz9lG7rLqH/eNc91lyH+a+Kv7/5u987KHDvXZeW4Mv3ulyZY2Oh8ag==}
     engines: {node: '>= 18.12.0 <= 20.10.0'}
     peerDependencies:
       constructs: ^10.3.0

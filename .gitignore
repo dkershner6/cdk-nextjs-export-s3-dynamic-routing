@@ -46,7 +46,7 @@ junit.xml
 !/.prettierrc.json
 !/.npmrc
 !/test/
-!/tsconfig.json
+!/tsconfig.dev.json
 !/src/
 /lib
 /dist/
