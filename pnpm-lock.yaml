@@ -38,8 +38,8 @@ devDependencies:
     specifier: 10.0.5
     version: 10.0.5
   dkershner6-projen:
-    specifier: ^0.0.6
-    version: 0.0.6(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2)
+    specifier: ^0.0.8
+    version: 0.0.8(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2)
   eslint:
     specifier: ^8
     version: 8.56.0
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^0.78.2
     version: 0.78.2(constructs@10.0.5)
   projen-nvm:
-    specifier: ^0.0.15
-    version: 0.0.15(constructs@10.0.5)(projen@0.78.2)
+    specifier: ^0.0.17
+    version: 0.0.17(constructs@10.0.5)(projen@0.78.2)
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -2159,8 +2159,8 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /dkershner6-projen@0.0.6(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2):
-    resolution: {integrity: sha512-Ut/q89YUtU9wpX0gXcmsefeVGhqRAt4sH/D8ISRTXPafMgO1UxnrqDvdbJfbpAJjpW0JuT5fo+F89b0enhU4eQ==}
+  /dkershner6-projen@0.0.8(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2):
+    resolution: {integrity: sha512-GnpgctMVGlOUcnRSK4ihcMekeDxYyEqBKEnvdAih7exKSzvr1b9mpQmIyQLL/uYbbiX4N8AiKSuEKcxr0ww7Bw==}
     engines: {node: '>= 18.12.0 <= 20.10.0'}
     peerDependencies:
       constructs: ^10.3.0
@@ -2207,7 +2207,7 @@ packages:
     dependencies:
       semver: 7.5.4
       shelljs: 0.8.5
-      typescript: 5.4.0-dev.20231225
+      typescript: 5.4.0-dev.20231226
     dev: true
 
   /electron-to-chromium@1.4.616:
@@ -4664,8 +4664,8 @@ packages:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
 
-  /projen-nvm@0.0.15(constructs@10.0.5)(projen@0.78.2):
-    resolution: {integrity: sha512-oHpsUaB+LFo7NbAiJJRyu+a49g7PHQXwtz9lG7rLqH/eNc91lyH+a+Kv7/5u987KHDvXZeW4Mv3ulyZY2Oh8ag==}
+  /projen-nvm@0.0.17(constructs@10.0.5)(projen@0.78.2):
+    resolution: {integrity: sha512-BBsxJGuatcxxAw4WJuhVDngq+M7xvO0uq2MYU4HemJ3Jxdbi8HzehD7xjI8IKk/EjGfFr/BvPM/wGdqOzsn/xA==}
     engines: {node: '>= 18.12.0 <= 20.10.0'}
     peerDependencies:
       constructs: ^10.3.0
@@ -5561,8 +5561,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.4.0-dev.20231225:
-    resolution: {integrity: sha512-5cTYQI4FrVz8ceeX+EsAzZLscTzKvwIRdyAkNQncqraQJqHToyL/r3Nt6oPtZxedrYqOzOXTTLdY8cdsHzDCcQ==}
+  /typescript@5.4.0-dev.20231226:
+    resolution: {integrity: sha512-UHOgBgQgky4SUZ2Z0tFVgzulKJSJBUkAtcBggBJ3swOUyIwn3PJBvZxHLtK94lszCq/FCR9ozErD+UABxmXyYQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
