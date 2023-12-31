@@ -22,3 +22,6 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+cdknextjsexports3dynamicrouting
+.prettier*
+.projen*
