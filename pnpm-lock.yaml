@@ -37,9 +37,9 @@ devDependencies:
   constructs:
     specifier: 10.0.5
     version: 10.0.5
-  dkershner6-projen:
-    specifier: ^0.0.8
-    version: 0.0.8(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2)
+  dkershner6-projen-typescript:
+    specifier: ^0.0.3
+    version: 0.0.3(clone-deep@4.0.1)(constructs@10.0.5)(projen@0.78.2)
   eslint:
     specifier: ^8
     version: 8.56.0
@@ -1711,6 +1711,15 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
+  /clone-deep@4.0.1:
+    resolution: {integrity: sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      is-plain-object: 2.0.4
+      kind-of: 6.0.3
+      shallow-clone: 3.0.1
+    dev: true
+
   /clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
@@ -2159,16 +2168,16 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /dkershner6-projen@0.0.8(constructs@10.0.5)(lodash.merge@4.6.2)(projen@0.78.2):
-    resolution: {integrity: sha512-GnpgctMVGlOUcnRSK4ihcMekeDxYyEqBKEnvdAih7exKSzvr1b9mpQmIyQLL/uYbbiX4N8AiKSuEKcxr0ww7Bw==}
+  /dkershner6-projen-typescript@0.0.3(clone-deep@4.0.1)(constructs@10.0.5)(projen@0.78.2):
+    resolution: {integrity: sha512-NjMRDH5zwf6f/Bn+oJ6WmyDp0aHYViO5kv9aWNUppx7uzoMRyDREhTGRXhi3RhiUCiThQlJctrKvSi8NY7QaSA==}
     engines: {node: '>= 18.12.0 <= 20.10.0'}
     peerDependencies:
+      clone-deep: ^4.0.1
       constructs: ^10.3.0
-      lodash.merge: ^4.6.2
-      projen: ^0.78.2
+      projen: ^0.78.5
     dependencies:
+      clone-deep: 4.0.1
       constructs: 10.0.5
-      lodash.merge: 4.6.2
       projen: 0.78.2(constructs@10.0.5)
     dev: true
 
@@ -2207,7 +2216,7 @@ packages:
     dependencies:
       semver: 7.5.4
       shelljs: 0.8.5
-      typescript: 5.4.0-dev.20231226
+      typescript: 5.4.0-dev.20231231
     dev: true
 
   /electron-to-chromium@1.4.616:
@@ -3274,6 +3283,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /is-plain-object@2.0.4:
+    resolution: {integrity: sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      isobject: 3.0.1
+    dev: true
+
   /is-regex@1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
     engines: {node: '>= 0.4'}
@@ -3349,6 +3365,11 @@ packages:
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    dev: true
+
+  /isobject@3.0.1:
+    resolution: {integrity: sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /istanbul-lib-coverage@3.2.2:
@@ -4976,6 +4997,13 @@ packages:
       has-property-descriptors: 1.0.1
     dev: true
 
+  /shallow-clone@3.0.1:
+    resolution: {integrity: sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==}
+    engines: {node: '>=8'}
+    dependencies:
+      kind-of: 6.0.3
+    dev: true
+
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
     engines: {node: '>=8'}
@@ -5561,8 +5589,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.4.0-dev.20231226:
-    resolution: {integrity: sha512-UHOgBgQgky4SUZ2Z0tFVgzulKJSJBUkAtcBggBJ3swOUyIwn3PJBvZxHLtK94lszCq/FCR9ozErD+UABxmXyYQ==}
+  /typescript@5.4.0-dev.20231231:
+    resolution: {integrity: sha512-WxVNmN4TzBXYvjI1CNGvee4IiipnTvbWTra3Is1ysh/eNQaaB0YLqKKYo0O5nrj0g8gqtwmU/H5fSGOLZDzZYg==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true

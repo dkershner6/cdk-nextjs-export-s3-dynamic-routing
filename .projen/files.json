@@ -10,6 +10,7 @@
     ".gitignore",
     ".mergify.yml",
     ".npmrc",
+    ".nvmrc",
     ".prettierignore",
     ".prettierrc.json",
     ".projen/deps.json",

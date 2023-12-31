@@ -1,4 +1,5 @@
-import { Node20AwsCdkConstructLibrary } from "dkershner6-projen";
+import { Node20AwsCdkConstructLibrary } from "dkershner6-projen-typescript";
+import { Nvmrc } from "projen-nvm";
 
 const GITHUB_USERNAME_OR_ORG = "dkershner6";
 const GITHUB_USERNAME_OR_ORG_PASCAL_CASE = "DKershner6";
@@ -17,21 +18,17 @@ const project = new Node20AwsCdkConstructLibrary({
     repositoryUrl:
         "https://github.com/dkershner6/cdk-nextjs-export-s3-dynamic-routing.git",
 
-    /* Runtime dependencies of this module. */
     deps: ["lodash.set", "uglify-js"],
     description:
         "Deploy a static export Next.js site to Cloudfront and S3 while maintaining the ability to use dynamic routes." /* The description is just a string that helps people understand the purpose of the package. */,
     devDeps: [
         "@types/lodash.set",
         "@types/uglify-js",
-        "dkershner6-projen",
+        "dkershner6-projen-typescript",
         "projen-nvm",
-    ] /* Build dependencies for this module. */,
-    packageName: PROJECT_NAME /* The "name" in package.json. */,
-    bundledDeps: [
-        "lodash.set",
-        "uglify-js",
-    ] /* Bundled dependencies of this module. */,
+    ],
+    packageName: PROJECT_NAME,
+    bundledDeps: ["lodash.set", "uglify-js"],
 
     gitignore: [".DS_Store"],
 
@@ -51,11 +48,16 @@ const project = new Node20AwsCdkConstructLibrary({
     },
 
     // publishToMaven: {
-    //   mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
-    //   javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace('-', '')}`,
-    //   mavenArtifactId: PROJECT_NAME,
-    //   mavenEndpoint: 'https://s01.oss.sonatype.org',
+    //     mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
+    //     javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace(
+    //         "-",
+    //         "",
+    //     )}`,
+    //     mavenArtifactId: PROJECT_NAME,
+    //     mavenEndpoint: "https://s01.oss.sonatype.org",
     // },
 });
+
+new Nvmrc(project);
 
 project.synth();

@@ -316,13 +316,13 @@
       },
       "steps": [
         {
-          "exec": "pnpx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/lodash.set,@types/node,@types/uglify-js,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,dkershner6-projen,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-jest,eslint-plugin-prettier,eslint-plugin-sonarjs,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,prettier,projen,projen-nvm,standard-version,ts-jest,ts-node,typescript,lodash.set,uglify-js,aws-cdk-lib,constructs"
+          "exec": "pnpx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/lodash.set,@types/node,@types/uglify-js,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,dkershner6-projen-typescript,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-jest,eslint-plugin-prettier,eslint-plugin-sonarjs,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,prettier,projen,projen-nvm,standard-version,ts-jest,ts-node,typescript,lodash.set,uglify-js,aws-cdk-lib,constructs"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/jest @types/lodash.set @types/node @types/uglify-js @typescript-eslint/eslint-plugin @typescript-eslint/parser dkershner6-projen eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-jest eslint-plugin-prettier eslint-plugin-sonarjs eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak prettier projen projen-nvm standard-version ts-jest ts-node typescript lodash.set uglify-js aws-cdk-lib constructs"
+          "exec": "pnpm update @types/jest @types/lodash.set @types/node @types/uglify-js @typescript-eslint/eslint-plugin @typescript-eslint/parser dkershner6-projen-typescript eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-jest eslint-plugin-prettier eslint-plugin-sonarjs eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak prettier projen projen-nvm standard-version ts-jest ts-node typescript lodash.set uglify-js aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
