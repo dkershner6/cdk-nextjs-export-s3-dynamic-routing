@@ -1,4 +1,5 @@
-import { Node20AwsCdkConstructLibrary } from "dkershner6-projen";
+import { Node20AwsCdkConstructLibrary } from "dkershner6-projen-typescript";
+import { Nvmrc } from "projen-nvm";
 
 const GITHUB_USERNAME_OR_ORG = "dkershner6";
 const GITHUB_USERNAME_OR_ORG_PASCAL_CASE = "DKershner6";
@@ -24,7 +25,7 @@ const project = new Node20AwsCdkConstructLibrary({
     devDeps: [
         "@types/lodash.set",
         "@types/uglify-js",
-        "dkershner6-projen",
+        "dkershner6-projen-typescript",
         "projen-nvm",
     ] /* Build dependencies for this module. */,
     packageName: PROJECT_NAME /* The "name" in package.json. */,
@@ -57,5 +58,7 @@ const project = new Node20AwsCdkConstructLibrary({
     //   mavenEndpoint: 'https://s01.oss.sonatype.org',
     // },
 });
+
+new Nvmrc(project);
 
 project.synth();
