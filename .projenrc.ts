@@ -48,10 +48,13 @@ const project = new Node20AwsCdkConstructLibrary({
     },
 
     // publishToMaven: {
-    //   mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
-    //   javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace('-', '')}`,
-    //   mavenArtifactId: PROJECT_NAME,
-    //   mavenEndpoint: 'https://s01.oss.sonatype.org',
+    //     mavenGroupId: `io.github.${GITHUB_USERNAME_OR_ORG}`,
+    //     javaPackage: `io.github.${GITHUB_USERNAME_OR_ORG}.${PROJECT_NAME.replace(
+    //         "-",
+    //         "",
+    //     )}`,
+    //     mavenArtifactId: PROJECT_NAME,
+    //     mavenEndpoint: "https://s01.oss.sonatype.org",
     // },
 });
 
