@@ -31,7 +31,6 @@ jspm_packages/
 .yarn-integrity
 .cache
 .DS_Store
-cdknextjsexports3dynamicrouting
 !/.projenrc.js
 /test-reports/
 junit.xml

@@ -6,9 +6,6 @@ const GITHUB_USERNAME_OR_ORG_PASCAL_CASE = "DKershner6";
 const PROJECT_NAME = "cdk-nextjs-export-s3-dynamic-routing";
 const PROJECT_NAME_PASCAL_CASE = "CdkNextjsExportS3DynamicRouting";
 
-/** This is where GO sticks things */
-const PROJECT_NAME_NO_DASHES = PROJECT_NAME.replace(/-/g, "");
-
 const project = new Node20AwsCdkConstructLibrary({
     majorVersion: 1,
     author: "Derek Kershner",
@@ -33,7 +30,7 @@ const project = new Node20AwsCdkConstructLibrary({
     packageName: PROJECT_NAME,
     bundledDeps: ["lodash.set", "uglify-js"],
 
-    gitignore: [".DS_Store", PROJECT_NAME_NO_DASHES],
+    gitignore: [".DS_Store"],
 
     // Publish to other languages
     releaseToNpm: true,
@@ -50,6 +47,7 @@ const project = new Node20AwsCdkConstructLibrary({
 
     publishToGo: {
         moduleName: `github.com/${GITHUB_USERNAME_OR_ORG}/${PROJECT_NAME}`,
+        gitBranch: "publish-go",
     },
 
     // publishToMaven: {
@@ -63,9 +61,8 @@ const project = new Node20AwsCdkConstructLibrary({
     // },
 });
 
-project.addPackageIgnore(PROJECT_NAME_NO_DASHES);
 project.addPackageIgnore(".prettier*");
-project.addPackageIgnore(".projen*");
+project.addPackageIgnore(".projenrc.*");
 
 new Nvmrc(project);
 
