@@ -2,6 +2,7 @@
 
 import fs = require("fs");
 import path = require("path");
+
 import * as cdk from "aws-cdk-lib";
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
 import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
@@ -10,6 +11,7 @@ import * as s3deploy from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
 import set = require("lodash.set");
 import { minify } from "uglify-js";
+
 import { NestedStringObject, NextjsRoutesManifest } from "./nextjsTypes";
 import { NextjsExportS3DynamicRoutingDistributionProps } from "./omitCdkTypes";
 
