@@ -134,16 +134,7 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
-        }
-      ]
-    },
-    "eslint-strict": {
-      "name": "eslint-strict",
-      "description": "Stricter Lint Command",
-      "steps": [
-        {
-          "spawn": "eslint",
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools projenrc .projenrc.ts",
           "args": [
             "--max-warnings=0"
           ]
@@ -178,10 +169,10 @@
     },
     "lint": {
       "name": "lint",
-      "description": "Alternate strict lint command",
+      "description": "Alternate lint command",
       "steps": [
         {
-          "spawn": "eslint-strict"
+          "spawn": "eslint"
         }
       ]
     },
@@ -295,7 +286,10 @@
       "description": "Run tests",
       "steps": [
         {
-          "spawn": "eslint-strict"
+          "spawn": "eslint"
+        },
+        {
+          "spawn": "type-check"
         },
         {
           "spawn": "test-unit"
