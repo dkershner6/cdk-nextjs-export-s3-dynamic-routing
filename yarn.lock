@@ -1917,10 +1917,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-dkershner6-projen-typescript@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/dkershner6-projen-typescript/-/dkershner6-projen-typescript-0.0.8.tgz#d9c6826cb614e7346a51aceaf730013de4b12c69"
-  integrity sha512-/2d+ISfKMwjg3xzi1WJiWQyy9JLmDG32eWmVfUUsaYN9Kx80MCzDMOAqNTZ3e50gmIxvmikOtqamRCzZYuTYvA==
+dkershner6-projen-typescript@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/dkershner6-projen-typescript/-/dkershner6-projen-typescript-0.0.12.tgz#79fadfac4120cda8a0ceb93a881446d2463eb2b6"
+  integrity sha512-Rp9toRqiCrJ1/a1ARjD7leZ3lEOJ6RLqj+KxK1CHVKjSfwMsXvU+JG9LsCJXGd6yv5kd2XsZtalUD1El6gV5KA==
 
 doctrine@^2.1.0:
   version "2.1.0"
@@ -1961,9 +1961,9 @@ downlevel-dts@^0.11.0:
     typescript next
 
 electron-to-chromium@^1.4.601:
-  version "1.4.616"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.616.tgz#4bddbc2c76e1e9dbf449ecd5da3d8119826ea4fb"
-  integrity sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==
+  version "1.4.619"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.619.tgz#81d302a8284c669caca76e611aeb59337510f45f"
+  integrity sha512-gW4qlnHxa49kp9kXlLdvnwdYEUlQRio30QOR61YfOQU8MaC/NGHWiJhyMMUl1EwFHbbzQTxvP1Dypdw95DjIow==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -4235,15 +4235,15 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-projen-nvm@^0.0.44:
-  version "0.0.44"
-  resolved "https://registry.yarnpkg.com/projen-nvm/-/projen-nvm-0.0.44.tgz#dcc3a5f40c3afd0542b7849763d0761fbd810d4f"
-  integrity sha512-s40lpQhyhlWJXrH4xKBw/0ihY+ZWeGq84AidTHjzZ89JpPc4fXK5j4SsBI8kyXcEL3YsfGbHN6X81q97nXNQxw==
+projen-nvm@^0.0.48:
+  version "0.0.48"
+  resolved "https://registry.yarnpkg.com/projen-nvm/-/projen-nvm-0.0.48.tgz#c2991813250b524a4919b2f91db054dcff1a9c71"
+  integrity sha512-oaMa9rvI4oXvq8sY3OH5+On5jYOLmLZYvP0yudlumfrcsCQYiW/dTlJb/wbirRnuIK/ihhX0OzMfEwSQpS7Ivw==
 
-projen@^0.78.5:
-  version "0.78.5"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.78.5.tgz#af188ff25cf8a7d8a6f9743b4d678b95459d581b"
-  integrity sha512-XghLqRVsbUrGo6YJJ9KuNXfzTZDvZaP664Di0uEJyQLvrawgag3z2UHOstVbtpzJ2MYZzKQyPVMgwlUfltTyCg==
+projen@^0.78.8:
+  version "0.78.8"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.78.8.tgz#829a88099b475f399eccffb08c5562feb376c9b2"
+  integrity sha512-m/wHBKy1L8SWrxRCpXNHV8CtFgC2jjS/7NUmJsOEh5AURQCAdJT2NY94jsN+jffYpCYapBI7x2TraYpKlI9xag==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
